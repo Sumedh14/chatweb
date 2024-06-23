@@ -33,7 +33,7 @@ const Header = () => {
             <div className={ `fixed top-0 left-0 w-full z-50 
         border-b border-n-6 lg:bg-n-8/90 ${toggleMenu ? "bg-n-8" : "bg-n-8/90"}
         lg:backdrop-blur-sm ` }>
-                < div className="flex items-center px5 lg:px-7.5xl: px - 10 mx - lg: py - 4">
+                < div className="flex items-center p-3 lg:px-7.5 xl:px-10 mx-lg:py-4">
                     < a className="flex items-center" href="#hero"
                         onClick={ handeClick } >
                         <img src={ webchat } height={ 40 } />
