@@ -7,26 +7,43 @@ const Chatwindow = () => {
     const [chatText, setchatText] = useState('')
 
     const onChangeText = (e) => {
-        e.preventDefault();
         let changeText = e.target.value;
         setText(changeText);
+      
     }
 
     const sendText = (e) => {
         e.preventDefault();
-        console.log(text);
         setchatText(text);
+        setTimeout(() => textRender(chatText), 1000);
         setText("");
+        displayText();
+    }
+
+    const displayText = () => {
+        let getText = localStorage.getItem('text');
+    }
+
+    const textRender = (chatText) => {
+        let textObj;
+        let textElement = localStorage.getItem('text');
+        if (textElement == null) {
+            textObj = [];
+        } else {
+            textObj = JSON.parse(textElement);
+        }
+        textObj.push(chatText);
+        localStorage.setItem('text', JSON.stringify(textObj))
     }
 
     return (
         <div className="chatbot relative z-1 p-0.5 rounded-2xl sm:h-[40rem] lg:h-[30rem]">
-            <header>
+            <div className="h-[1.4rem] text-center  bg-n-11 text-color-1 rounded-t-[0.9rem]">
                 Webchat
-            </header>
+            </div>
             <ul className="chatbox sm:h-[20rem] lg:h-[25rem]">
                 <li className="chat incoming text-color-1">
-                    <span className="material-symbols-outlined"><img src={ robotsvg } alt="robotsvg" /></span>
+                    <span className="robosvg"><img src={ robotsvg } alt="robotsvg" /></span>
                     <p>Hi There &#128075; How can I help you today?</p>
                 </li>
                 <ChatComponent chatText={ chatText } />
